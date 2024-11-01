@@ -176,6 +176,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -201,6 +202,14 @@
     <Compile Include="Migrations\202410310129161_UpdateActive.cs" />
     <Compile Include="Migrations\202410310129161_UpdateActive.Designer.cs">
       <DependentUpon>202410310129161_UpdateActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411010215241_AddingNewPropertyToPosts.cs" />
+    <Compile Include="Migrations\202411010215241_AddingNewPropertyToPosts.Designer.cs">
+      <DependentUpon>202411010215241_AddingNewPropertyToPosts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411010744523_ChangeLengthModels.cs" />
+    <Compile Include="Migrations\202411010744523_ChangeLengthModels.Designer.cs">
+      <DependentUpon>202411010744523_ChangeLengthModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3135,6 +3144,9 @@
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3228,6 +3240,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410310129161_UpdateActive.resx">
       <DependentUpon>202410310129161_UpdateActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411010215241_AddingNewPropertyToPosts.resx">
+      <DependentUpon>202411010215241_AddingNewPropertyToPosts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411010744523_ChangeLengthModels.resx">
+      <DependentUpon>202411010744523_ChangeLengthModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
