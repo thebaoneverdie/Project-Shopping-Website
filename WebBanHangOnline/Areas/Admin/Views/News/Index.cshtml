@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebBanHangOnline.Models.EF.News>
+﻿@model PagedList.IPagedList<WebBanHangOnline.Models.EF.News>
+@using PagedList.Mvc;
+@using PagedList;
 @{
     ViewBag.Title = "Danh sách tin tức";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -46,6 +48,19 @@
             </div>
         </div>
         <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    @using (Html.BeginForm("Index", "News", FormMethod.Get, new { }))
+                    {
+                        <div class="input-group input-group-sm">
+                            <input type="text" name="searchText" class="form-control" />
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
+                            </span>
+                        </div>
+                    }
+                </div>
+            </div>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -62,9 +77,10 @@
                 <tbody>
                     @if (Model != null && Model.Any())
                     {
-                        var i = 1;
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize ) + 1; ;
                         foreach (var item in Model)
                         {
+
                             var checkIsActive = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
                             <tr id="trow_@item.Id">
                                 <td><input type="checkbox" class="CbkItem" value="@item.Id" /></td>
@@ -80,7 +96,7 @@
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                 </td>
                             </tr>
-                            i++;
+                            i = i + 1;
                         }
 
                     }
@@ -93,6 +109,12 @@
                     }
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6" style="text-align:right"> 
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -185,14 +207,14 @@
             var btn = $(this);
             var id = btn.data("id");
             $.ajax({
-                   url: '/admin/news/IsActive',
-                    type: 'POST',
-                    data: { id: id },
+                url: '/admin/news/IsActive',
+                type: 'POST',
+                data: { id: id },
                 success: function (result) {
-                    if (result.success){
+                    if (result.success) {
                         if (result.isActive) {
                             btn.html("<i class='fa fa-check text-success'></i>")
-                           /* $(this).html("<i class='fa fa-check text-success'></i>");*/
+                            /* $(this).html("<i class='fa fa-check text-success'></i>");*/
                         }
                         else {
                             btn.html("<i class='fa fa-times text-danger'></i>")

@@ -61,6 +61,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 			return View(model);
 
 		}
+
 		[HttpPost]
 		public ActionResult Delete(int id)
 		{
@@ -73,6 +74,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 			}
 			return Json(new { success = true });
 		}
+
 		[HttpPost]
 		public ActionResult IsActive(int id)
 		{
@@ -86,6 +88,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 			}
 			return Json(new { success = false });
 		}
+
 		[HttpPost]
 		public ActionResult DeleteAll(string ids)
 		{
