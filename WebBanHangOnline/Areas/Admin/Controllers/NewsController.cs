@@ -29,6 +29,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 
 				items = items.Where(x => x.Alias.Contains(searchText) || x.Title.Contains(searchText));
 			}
+
 			var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
 			items = items.ToPagedList(pageIndex, pageSize);
 			ViewBag.Page = pageIndex;

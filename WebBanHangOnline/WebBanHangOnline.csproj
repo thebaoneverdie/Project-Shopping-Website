@@ -183,6 +183,8 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -216,6 +218,10 @@
     <Compile Include="Migrations\202411010744523_ChangeLengthModels.cs" />
     <Compile Include="Migrations\202411010744523_ChangeLengthModels.Designer.cs">
       <DependentUpon>202411010744523_ChangeLengthModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411040655369_UpdateProductCategory.cs" />
+    <Compile Include="Migrations\202411040655369_UpdateProductCategory.Designer.cs">
+      <DependentUpon>202411040655369_UpdateProductCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3043,6 +3049,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\autoNumeric-1.9.45.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -3154,6 +3161,10 @@
     <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Add.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3165,6 +3176,20 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\files\01bc2cef94939b685418f87d57b60967.jpg" />
+    <Content Include="Uploads\files\270.png" />
+    <Content Include="Uploads\files\4e25f6b2cc5208ec5645b83bcdf78167.jpg" />
+    <Content Include="Uploads\files\Real-Madrid-co-the-bi-khoi-to-vi-hoi-lo-canh-sat-che-day-su-viec-dong-troi-real-1-1730279732-928-width740height495%281%29.jpg" />
+    <Content Include="Uploads\files\Real-Madrid-co-the-bi-khoi-to-vi-hoi-lo-canh-sat-che-day-su-viec-dong-troi-real-1-1730279732-928-width740height495.jpg" />
+    <Content Include="Uploads\files\wp12273258.jpg" />
+    <Content Include="Uploads\images\0df5535b4d129570cdb602289e72d57f.jpg" />
+    <Content Include="Uploads\_thumbs\Files\01bc2cef94939b685418f87d57b60967.jpg" />
+    <Content Include="Uploads\_thumbs\Files\270.png" />
+    <Content Include="Uploads\_thumbs\Files\4e25f6b2cc5208ec5645b83bcdf78167.jpg" />
+    <Content Include="Uploads\_thumbs\Files\Real-Madrid-co-the-bi-khoi-to-vi-hoi-lo-canh-sat-che-day-su-viec-dong-troi-real-1-1730279732-928-width740height495%281%29.jpg" />
+    <Content Include="Uploads\_thumbs\Files\Real-Madrid-co-the-bi-khoi-to-vi-hoi-lo-canh-sat-che-day-su-viec-dong-troi-real-1-1730279732-928-width740height495.jpg" />
+    <Content Include="Uploads\_thumbs\Files\wp12273258.jpg" />
+    <Content Include="Uploads\_thumbs\Images\0df5535b4d129570cdb602289e72d57f.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3204,6 +3229,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\ckfinder\userfiles\" />
+    <Folder Include="Uploads\flash\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -3253,6 +3279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202411010744523_ChangeLengthModels.resx">
       <DependentUpon>202411010744523_ChangeLengthModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411040655369_UpdateProductCategory.resx">
+      <DependentUpon>202411040655369_UpdateProductCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
