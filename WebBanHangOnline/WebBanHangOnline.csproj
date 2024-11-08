@@ -223,6 +223,14 @@
     <Compile Include="Migrations\202411040655369_UpdateProductCategory.Designer.cs">
       <DependentUpon>202411040655369_UpdateProductCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411080211483_Update0811.cs" />
+    <Compile Include="Migrations\202411080211483_Update0811.Designer.cs">
+      <DependentUpon>202411080211483_Update0811.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411080222004_Update08111.cs" />
+    <Compile Include="Migrations\202411080222004_Update08111.Designer.cs">
+      <DependentUpon>202411080222004_Update08111.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3282,6 +3290,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202411040655369_UpdateProductCategory.resx">
       <DependentUpon>202411040655369_UpdateProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411080211483_Update0811.resx">
+      <DependentUpon>202411080211483_Update0811.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411080222004_Update08111.resx">
+      <DependentUpon>202411080222004_Update08111.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
