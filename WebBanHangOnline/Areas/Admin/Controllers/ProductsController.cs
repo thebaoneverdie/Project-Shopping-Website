@@ -85,5 +85,44 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 			ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
 			return View(model);
 		}
-    }
+
+
+		public ActionResult Edit(int id)
+		{
+			ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
+			var item = _dbContext.Products.Find(id);
+			return View(item);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Edit(Product model)
+		{
+			if (ModelState.IsValid)
+			{
+				model.ModifiedDate = DateTime.Now;
+				model.Alias = WebBanHangOnline.Models.Common.Filter.FilterChar(model.Alias);
+				_dbContext.Products.Attach(model);
+				_dbContext.Entry(model).State = System.Data.Entity.EntityState.Modified;
+				_dbContext.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			return View(model);
+
+		}
+
+		[HttpPost]
+		public ActionResult Delete(int id)
+		{
+			var item = _dbContext.Products.Find(id);
+			if (item != null)
+			{
+				_dbContext.Products.Remove(item);
+				_dbContext.SaveChanges();
+				return Json(new { success = true });
+			}
+			return Json(new { success = true });
+		}
+
+	}
 }
