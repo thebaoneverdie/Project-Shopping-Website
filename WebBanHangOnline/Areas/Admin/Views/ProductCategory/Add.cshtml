@@ -1,4 +1,4 @@
-﻿@model WebBanHangOnline.Models.EF.ProductCategory
+﻿﻿@model WebBanHangOnline.Models.EF.ProductCategory
 @{
     ViewBag.Title = "Thêm mới danh mục sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -45,31 +45,36 @@
         </div>
         <div class="card-body">
             <div class="bs-stepper-content">
-                @using (Html.BeginForm("Add", "Productcategory", FormMethod.Post, new { }))
+                @using (Html.BeginForm("Add", "ProductCategory", FormMethod.Post, new { }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
-                    <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Tiêu đề</label>
-                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
-                            @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Seo title</label>
-                            @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Seo description</label>
-                            @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Seo keywords</label>
-                            @Html.TextAreaFor(x => x.SeoKeyWords, new { @class = "form-control" })
-                        </div>
-                        <a href="/admin/productcategory" class="btn btn-danger">Quay lại</a>
-                        <button type="submit" class="btn btn-primary">Lưu</button>
+                <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tiêu đề</label>
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
+                        @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Alias</label>
+                        @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @placeholder = "Alias" })
+                        @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Seo title</label>
+                        @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Seo description</label>
+                        @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Seo keywords</label>
+                        @Html.TextAreaFor(x => x.SeoKeyWords, new { @class = "form-control" })
+                    </div>
+                    <a href="/admin/productcategory" class="btn btn-danger">Quay lại</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
                 }
                 <!-- your steps content here -->
             </div>
