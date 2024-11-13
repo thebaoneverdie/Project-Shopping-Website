@@ -64,8 +64,8 @@
                     <tr>
                         <th><input type="checkbox" id="SelectAll" /></th>
                         <th>STT</th>
-
                         <th>Tiêu đề</th>
+                        <th>Icon</th>
                         <th>Ngày tạo</th>
                         <th>Hành động</th>
                         <th></th>
@@ -79,14 +79,15 @@
                         {
 
                             //var checkIsActive = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
-                            <tr id="trow_@item.Id"> 
+                            <tr id="trow_@item.Id">
                                 <td><input type="checkbox" class="CbkItem" value="@item.Id" /></td>
                                 <td>@i</td>
                                 <td>@item.Title</td>
+                                <td><img src="@item.Icon" width="50" /></td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 @*<td class="text-center">
-                                        <a href="#" data-id=@item.Id class="btnActive">@Html.Raw(checkIsActive)</a>
-                                    </td>*@
+            <a href="#" data-id=@item.Id class="btnActive">@Html.Raw(checkIsActive)</a>
+        </td>*@
                                 <td>
                                     <a href="/admin/productcategory/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>

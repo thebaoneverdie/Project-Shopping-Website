@@ -1,6 +1,6 @@
 ﻿﻿@model WebBanHangOnline.Models.EF.ProductCategory
-@{
-    ViewBag.Title = "Thêm mới danh mục sản phẩm";
+@{ 
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,19 +16,19 @@
             <a href="/admin/productcategory" class="nav-link">danh mục sản phẩm</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Thêm mới</a>
+            <a href="#" class="nav-link">Cập nhật</a>
         </li>
     </ul>}
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Thêm mới danh mục sản phẩm</h1>
+                <h1>Cập nhật danh mục sản phẩm</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Danh mục sản phẩm</a></li>
-                    <li class="breadcrumb-item active">Thêm mới</li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
                 </ol>
             </div>
         </div>
@@ -41,14 +41,18 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Thông tin thêm mới tdanh mục sản phẩm</h3>
+            <h3 class="card-title">Thông tin cập nhật danh mục sản phẩm</h3>
         </div>
         <div class="card-body">
             <div class="bs-stepper-content">
-                @using (Html.BeginForm("Add", "ProductCategory", FormMethod.Post, new { }))
+                @if (Model != null)
                 {
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
+                    using (Html.BeginForm("Edit", "ProductCategory", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.HiddenFor(x => x.CreatedDate)
                 <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tiêu đề</label>
@@ -86,7 +90,9 @@
                     <a href="/admin/productcategory" class="btn btn-danger">Quay lại</a>
                     <button type="submit" class="btn btn-primary">Lưu</button>
                 </div>
+                    }
                 }
+
                 <!-- your steps content here -->
             </div>
             <!-- /.card-body -->
@@ -117,3 +123,5 @@
         }
     </script>
 }
+
+
