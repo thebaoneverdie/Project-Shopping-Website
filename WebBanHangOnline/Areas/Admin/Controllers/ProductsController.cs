@@ -45,11 +45,11 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if(Images != null && Images.Count > 0)
+				if (Images != null && Images.Count > 0)
 				{
-					for(int i = 0; i < Images.Count; i++)
+					for (int i = 0; i < Images.Count; i++)
 					{
-						if(i + 1 == rDefault[0])
+						if (i + 1 == rDefault[0])
 						{
 							model.Image = Images[i];
 							model.ProductImage.Add(new ProductImage
@@ -76,8 +76,9 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 				{
 					model.SeoTitle = model.Title;
 				}
-					if (string.IsNullOrEmpty(model.Alias))
+				// Luôn xử lý Alias
 				model.Alias = WebBanHangOnline.Models.Common.Filter.FilterChar(model.Title);
+
 				_dbContext.Products.Add(model);
 				_dbContext.SaveChanges();
 				return RedirectToAction("Index");
@@ -85,7 +86,6 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 			ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
 			return View(model);
 		}
-
 
 		public ActionResult Edit(int id)
 		{
@@ -123,6 +123,51 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 			}
 			return Json(new { success = true });
 		}
+
+		[HttpPost]
+		public ActionResult IsActive(int id)
+		{
+			var item = _dbContext.Products.Find(id);
+			if (item != null)
+			{
+				item.IsActive = !item.IsActive;
+				_dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+				_dbContext.SaveChanges();
+				return Json(new { success = true, isActive = item.IsActive });
+			}
+			return Json(new { success = false });
+		}
+
+		[HttpPost]
+		public ActionResult IsHome(int id)
+		{
+			var item = _dbContext.Products.Find(id);
+			if (item != null)
+			{
+				item.IsHome = !item.IsHome;
+				_dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+				_dbContext.SaveChanges();
+				return Json(new { success = true, isHome = item.IsHome });
+			}
+
+			return Json(new { success = false });
+		}
+
+		[HttpPost]
+		public ActionResult IsSale(int id)
+		{
+			var item = _dbContext.Products.Find(id);
+			if (item != null)
+			{
+				item.IsSale = !item.IsSale;
+				_dbContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
+				_dbContext.SaveChanges();
+				return Json(new { success = true, isSale = item.IsSale });
+			}
+
+			return Json(new { success = false });
+		}
+
 
 	}
 }

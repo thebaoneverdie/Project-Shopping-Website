@@ -28,6 +28,12 @@ namespace WebBanHangOnline.Controllers
             return PartialView("_MenuProductCategory", items);
         }
 
+        public ActionResult MenuArrivals()
+        {
+            var items = _dbContext.ProductCategories.ToList();
+            return PartialView("_MenuArrivals",items);
+        }
+
 
     }
 }
