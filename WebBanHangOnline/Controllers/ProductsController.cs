@@ -11,12 +11,38 @@ namespace WebBanHangOnline.Controllers
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View();
-        }
+            var items = _dbContext.Products.ToList();
 
-        public ActionResult Partial_ItemsByCateId()
+            if(id != null)
+            {
+                items = items.Where(x => x.ProductCategoryId == id).ToList();
+            }
+
+            return View(items);
+        }
+		public ActionResult ProductCategory(string alias ,int id)
+		{
+			var items = _dbContext.Products.ToList();
+
+			if (id > 0 )
+			{
+				items = items.Where(x => x.ProductCategoryId == id).ToList();
+			}
+
+            var cate = _dbContext.ProductCategories.Find(id);
+
+            if(cate != null)
+            {
+                ViewBag.CateName = cate.Title;
+            }
+            ViewBag.CateId = id;
+
+			return View(items);
+		}
+
+		public ActionResult Partial_ItemsByCateId()
         {
             var items = _dbContext.Products.Where(x => x.IsHome && x.IsActive).Take(10).ToList();
             return PartialView(items);

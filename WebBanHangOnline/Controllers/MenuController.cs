@@ -27,8 +27,19 @@ namespace WebBanHangOnline.Controllers
             var items = _dbContext.ProductCategories.ToList();
             return PartialView("_MenuProductCategory", items);
         }
+		public ActionResult MenuLeft(int? id)
+		{
+            if(id != null)
+            {
+                ViewBag.CateId = id;
 
-        public ActionResult MenuArrivals()
+			}
+			var items = _dbContext.ProductCategories.ToList();  
+			return PartialView("_MenuLeft", items);
+		}
+
+
+		public ActionResult MenuArrivals()
         {
             var items = _dbContext.ProductCategories.ToList();
             return PartialView("_MenuArrivals",items);
