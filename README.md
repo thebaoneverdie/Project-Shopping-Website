@@ -1,7 +1,8 @@
 # E-Commerce Website
 
 This is a solo project built as a fully functional e-commerce website with essential features for managing products, users, and orders.
-To review code please change to Developer branch!!!
+
+To review these code please change to Developer branch!!!
 
 ## Features
 
