@@ -1,0 +1,90 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
+@using WebBanHangOnline.Common
+@{
+    ViewBag.Title = "Giỏ hàng";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">
+
+<<div class="container product_section_container">
+    <!-- Breadcrumbs -->
+    <div class="row">
+        <div class="col-12">
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul class="mb-0">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="/"><i class="fa fa-angle-right" aria-hidden="true"></i> Giỏ hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nội dung giỏ hàng -->
+    <div class="row mt-4">
+        <div class="col-12">
+            @*<h2 class="text-center mb-4">Giỏ hàng của bạn</h2>*@
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr class="text-center">
+                            <th>STT</th>
+                            <th>Ảnh sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Danh mục</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            var i = 0;
+                            var tongtien = decimal.Zero;
+                            foreach (var item in Model)
+                            {
+                                tongtien += item.TotalPrice;
+                                <tr  id="trow_@item.ProductId">
+                                    <td style="text-align:center">@(i + 1)</td>
+                                    <td class="text-center">
+                                        <div class="d-flex justify-content-center align-items-center" style="height: 80px;">
+                                            <img src="@item.ProductImg" alt="@item.ProductName" class="img-fluid" style="max-width: 80px; max-height: 80px;">
+                                        </div>
+                                    </td>
+                                    <td><a href="/chi-tiet/@item.Alias-p@(item.ProductId)">@item.ProductName</a></td>
+                                    <td style="text-align:center">@item.CategoryName</td>
+                                    <td style="text-align:center">@Common.FormatNumber(item.Price, 0)</td>
+                                    <td style="text-align:center">@item.Quantity</td>
+                                    <th style="text-align:center">@Common.FormatNumber(item.TotalPrice, 0)</th>
+                                    <td>
+                                        <a href="#" data-id="@item.ProductId" class="btn btn-danger btn-sm btnDelete">Xóa</a>
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                    <tr>
+                        <th colspan="6" class="text-right">Tổng: </th>
+                        <th class="text-center">@Common.FormatNumber(tongtien, 0)</th>
+                        <td></td>
+                    </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center">Không có sản phẩm trong giỏ hàng</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/assets/js/categories_custom.js"></script>
+}
+
+
