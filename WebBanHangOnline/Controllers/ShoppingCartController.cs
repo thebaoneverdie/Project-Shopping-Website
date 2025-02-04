@@ -12,15 +12,40 @@ namespace WebBanHangOnline.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
-			ShoppingCart cart = (ShoppingCart)Session["Cart"];
-            if(cart != null)
-            {
-                return View(cart.Items);
-            }
 			return View();
         }
 
-        public ActionResult ShowCount()
+		public ActionResult CheckOut()
+		{
+			ShoppingCart cart = (ShoppingCart)Session["Cart"];
+			if (cart != null)
+			{
+                ViewBag.CheckCart = cart;
+			}
+			return View();
+		}
+
+		public ActionResult Partial_Item_Payment()
+		{
+			ShoppingCart cart = (ShoppingCart)Session["Cart"];
+			if (cart != null)
+			{
+				return PartialView(cart.Items);
+			}
+			return PartialView();
+		}
+
+		public ActionResult Partial_Item_Cart()
+		{
+			ShoppingCart cart = (ShoppingCart)Session["Cart"];
+			if (cart != null)
+			{
+				return PartialView(cart.Items);
+			}
+			return PartialView();
+		}
+
+		public ActionResult ShowCount()
         {
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
             if(cart != null)
@@ -34,42 +59,54 @@ namespace WebBanHangOnline.Controllers
         [HttpPost]
         public ActionResult AddToCart(int id, int quantity)
         {
-            var code = new { Success = false, msg = "", code = -1, Count = 0};
+            var code = new { Success = false, msg = "", code = -1, Count = 0 };
             var db = new ApplicationDbContext();
-            var checkProduct = db.Products.FirstOrDefault(x => x.Id == id); 
+            var checkProduct = db.Products.FirstOrDefault(x => x.Id == id);
             if (checkProduct != null)
             {
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
-                if(cart == null)
+                if (cart == null)
                 {
                     cart = new ShoppingCart();
                 }
-				ShoppingCartItem item = new ShoppingCartItem
-				{
-					ProductId = checkProduct.Id,
-					ProductName = checkProduct.Title,
-					CategoryName = checkProduct.ProductCategory.Title,
+                ShoppingCartItem item = new ShoppingCartItem
+                {
+                    ProductId = checkProduct.Id,
+                    ProductName = checkProduct.Title,
+                    CategoryName = checkProduct.ProductCategory.Title,
                     Alias = checkProduct.Alias,
-					Quantity = quantity
-				};
-				if (checkProduct.ProductImage.FirstOrDefault(x => x.IsDefault) != null)
-				{
-					item.ProductImg = checkProduct.ProductImage.FirstOrDefault(x => x.IsDefault).Image;
-				}
-				item.Price = checkProduct.Price;
-				if (checkProduct.PriceSale > 0)
-				{
-					item.Price = (decimal)checkProduct.PriceSale;
-				}
-				item.TotalPrice = item.Quantity * item.Price;
-				cart.AddToCart(item, quantity);
+                    Quantity = quantity
+                };
+                if (checkProduct.ProductImage.FirstOrDefault(x => x.IsDefault) != null)
+                {
+                    item.ProductImg = checkProduct.ProductImage.FirstOrDefault(x => x.IsDefault).Image;
+                }
+                item.Price = checkProduct.Price;
+                if (checkProduct.PriceSale > 0)
+                {
+                    item.Price = (decimal)checkProduct.PriceSale;
+                }
+                item.TotalPrice = item.Quantity * item.Price;
+                cart.AddToCart(item, quantity);
                 Session["Cart"] = cart;
                 code = new { Success = true, msg = "Thêm sản phẩm vào giỏ hàng thành công!", code = 1, Count = cart.Items.Count };
-			}
+            }
             return Json(code);
-         }
+        }
 
-        [HttpPost]
+		[HttpPost]
+		public ActionResult Update(int id, int quantity)
+		{
+			ShoppingCart cart = (ShoppingCart)Session["Cart"];
+			if (cart != null)
+			{
+				cart.UpdateQuantity(id,quantity);
+				return Json(new { Success = true });
+			}
+			return Json(new { Success = false });
+		}
+
+		[HttpPost]
         public ActionResult Delete(int id)
         {
 			var code = new { Success = false, msg = "", code = -1, Count = 0 };
@@ -88,5 +125,20 @@ namespace WebBanHangOnline.Controllers
 
 			return Json(code);  
 		}
+
+
+		[HttpPost]
+        public ActionResult DeleteAll()
+        {
+            ShoppingCart cart = (ShoppingCart)Session["Cart"];
+            if(cart != null)
+            {
+                cart.ClearCart();
+                return Json(new { Success = true });
+            }
+			return Json(new { Success = false });
+		}
+
+
     }
 }
