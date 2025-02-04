@@ -27,8 +27,9 @@ namespace WebBanHangOnline.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        public DbSet<Category> Categories {  get; set; }
-        public DbSet<Adv>  Advs { get; set; }
+        public DbSet<ThongKe> ThongKes {  get; set; }
+		public DbSet<Category> Categories { get; set; }
+		public DbSet<Adv>  Advs { get; set; }
         public DbSet<Posts> Posts { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<SystemSetting> SystemSettings { get; set; }
