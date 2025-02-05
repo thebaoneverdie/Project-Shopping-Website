@@ -89,6 +89,7 @@ namespace WebBanHangOnline.Controllers
                     order.CustomerName = req.CustomerName;
                     order.Phone = req.Phone;
                     order.Address = req.Address;
+                    order.Email = req.Email;
                     cart.Items.ForEach(x => order.OrderDetails.Add(new OrderDetail {
                         ProductId = x.ProductId,
                         Quantity = x.Quantity,
