@@ -190,6 +190,10 @@
     <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Common\Common.cs" />
+    <Compile Include="Migrations\202502050313498_UpdateEmail.cs" />
+    <Compile Include="Migrations\202502050313498_UpdateEmail.Designer.cs">
+      <DependentUpon>202502050313498_UpdateEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Common\ThongKeTruyCap.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -3137,6 +3141,8 @@
     <Content Include="Content\clients\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Content\clients\plugins\uplot\uPlot.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\templates\send1.html" />
+    <Content Include="Content\templates\send2.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -3443,6 +3449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502041200300_CreateTBThongKe.resx">
       <DependentUpon>202502041200300_CreateTBThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502050313498_UpdateEmail.resx">
+      <DependentUpon>202502050313498_UpdateEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,46 +11,51 @@ namespace WebBanHangOnline.Common
     public class Common
     {
 
+		public static bool SendMail(string name, string subject, string content, string toMail)
+		{
+			bool rs = false;
 
-        private static string password = ConfigurationManager.AppSettings["PasswordEmail"];
-        private static string Email = ConfigurationManager.AppSettings["Email"];
-        public static bool SendMail(string name, string subject, string content,
-            string toMail)
-        {
-        bool rs = false;
-            try
-            {
-                MailMessage message = new MailMessage();
-                var smtp = new SmtpClient();
-                {
-                    smtp.Host = "smtp.gmail.com"; //host name
-                    smtp.Port = 587; //port number
-                    smtp.EnableSsl = true; //whether your smtp server requires SSL
-                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+			try
+			{
+				// Đọc thông tin từ web.config
+				string email = ConfigurationManager.AppSettings["Email"];
+				string password = ConfigurationManager.AppSettings["PasswordEmail"];
 
-                    smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential() { 
-                        UserName=Email,
-                        Password=password
-                    };
-                }
-                MailAddress fromAddress = new MailAddress(Email, name);
-                message.From = fromAddress;
-                message.To.Add(toMail);
-                message.Subject = subject;
-                message.IsBodyHtml = true;
-                message.Body = content;
-                smtp.Send(message);
-                rs = true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                rs = false;
-            }
-            return rs;
-        }
-        public static string FormatNumber(object value, int SoSauDauPhay = 2)
+				if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+				{
+					throw new Exception("Email hoặc mật khẩu không được cấu hình trong web.config.");
+				}
+
+				MailMessage message = new MailMessage();
+				var smtp = new SmtpClient
+				{
+					Host = "smtp.gmail.com", // Máy chủ SMTP của Gmail
+					Port = 587, // Cổng SMTP (TLS)
+					EnableSsl = true, // Kích hoạt SSL
+					DeliveryMethod = SmtpDeliveryMethod.Network,
+					UseDefaultCredentials = false,
+					Credentials = new NetworkCredential(email, password) // Đọc thông tin đăng nhập
+				};
+
+				MailAddress fromAddress = new MailAddress(email, name);
+				message.From = fromAddress;
+				message.To.Add(toMail); // Địa chỉ nhận
+				message.Subject = subject; // Tiêu đề
+				message.Body = content; // Nội dung email
+				message.IsBodyHtml = true; // Định dạng HTML
+
+				smtp.Send(message); // Gửi email
+				rs = true; // Email gửi thành công
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Lỗi khi gửi email: {ex.Message}");
+				rs = false;
+			}
+
+			return rs;
+		}
+		public static string FormatNumber(object value, int SoSauDauPhay = 2)
         {
             bool isNumber = IsNumeric(value);
             decimal GT = 0;
