@@ -9,7 +9,8 @@ using WebBanHangOnline.Models.EF;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+	[Authorize(Roles = "Admin")]
+	public class CategoryController : Controller
     {
 		ApplicationDbContext _dbConnect = new ApplicationDbContext();
         // GET: Admin/Category

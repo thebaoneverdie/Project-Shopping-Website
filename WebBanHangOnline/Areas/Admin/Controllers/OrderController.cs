@@ -9,7 +9,8 @@ using WebBanHangOnline.Models;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
-    public class OrderController : Controller
+	[Authorize(Roles = "Admin")]
+	public class OrderController : Controller
     {
         private ApplicationDbContext dbContext = new ApplicationDbContext();
 

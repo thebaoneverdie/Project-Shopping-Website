@@ -10,7 +10,8 @@ using WebBanHangOnline.Models.EF;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
-    public class ProductsController : Controller
+	[Authorize(Roles = "Admin,Employee")]
+	public class ProductsController : Controller
     {
 		private ApplicationDbContext _dbContext = new ApplicationDbContext();
 		// GET: Admin/Products
