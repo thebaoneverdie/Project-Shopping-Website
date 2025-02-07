@@ -28,6 +28,13 @@ namespace WebBanHangOnline
 			);
 
 			routes.MapRoute(
+				name: "News",
+				url: "tin-tuc",
+				defaults: new { controller = "News", action = "Index", alias = UrlParameter.Optional },
+				namespaces: new[] { "WebBanHangOnline.Controllers" }
+			);
+
+			routes.MapRoute(
 				name: "ShoppingCart",
 				url: "gio-hang",
 				defaults: new { controller = "ShoppingCart", action = "Index", alias = UrlParameter.Optional },

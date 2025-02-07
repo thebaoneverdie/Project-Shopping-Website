@@ -193,6 +193,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Common\Common.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Migrations\202502050313498_UpdateEmail.cs" />
     <Compile Include="Migrations\202502050313498_UpdateEmail.Designer.cs">
       <DependentUpon>202502050313498_UpdateEmail.cs</DependentUpon>
@@ -3461,6 +3462,9 @@
     <Content Include="Views\ShoppingCart\Partial_CheckOut.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOutSuccess.cshtml" />
     <Content Include="Views\Home\Refresh.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Partial_News_Home.cshtml" />
+    <Content Include="Views\News\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
