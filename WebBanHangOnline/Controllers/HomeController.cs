@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanHangOnline.Models;
+using WebBanHangOnline.Models.EF;
 
 namespace WebBanHangOnline.Controllers
 {
 	public class HomeController : Controller
 	{
+		private ApplicationDbContext dbContext = new ApplicationDbContext();
 		public ActionResult Index()
 		{
 			return View();
@@ -19,6 +21,25 @@ namespace WebBanHangOnline.Controllers
 			ViewBag.Message = "Your application description page.";
 
 			return View();
+		}
+
+		public ActionResult Partial_Subscribe()
+		{
+			return PartialView();
+		}
+
+
+		[HttpPost]
+		
+		public ActionResult Subscribe(Subscribe req)
+		{
+			if (ModelState.IsValid)
+			{
+				dbContext.Subscribes.Add(new Subscribe { Email = req.Email, CreatedDate = DateTime.Now});
+				dbContext.SaveChanges();
+				return Json(new { Success = true });
+			}
+			return View("Partial_Subscribe", req);
 		}
 
 		public ActionResult Refresh()

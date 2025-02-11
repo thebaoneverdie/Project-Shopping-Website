@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -46,5 +47,10 @@ namespace WebBanHangOnline.Models
         {
             return new ApplicationDbContext();
         }
-    }
+
+		internal void Add()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
