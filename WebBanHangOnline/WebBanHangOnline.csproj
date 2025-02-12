@@ -192,6 +192,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticalController.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\SettingHelper.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -203,6 +204,10 @@
     <Compile Include="Migrations\202502111220362_UpdateSubcibe.cs" />
     <Compile Include="Migrations\202502111220362_UpdateSubcibe.Designer.cs">
       <DependentUpon>202502111220362_UpdateSubcibe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502121206184_UpdateOriginalPrice.cs" />
+    <Compile Include="Migrations\202502121206184_UpdateOriginalPrice.Designer.cs">
+      <DependentUpon>202502121206184_UpdateOriginalPrice.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Common\ThongKeTruyCap.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -377,6 +382,12 @@
     <Content Include="Content\assets\js\custom.js" />
     <Content Include="Content\assets\js\jquery-3.2.1.min.js" />
     <Content Include="Content\assets\js\single_custom.js" />
+    <Content Include="Content\assets\plugins\chart.js\Chart.bundle.js" />
+    <Content Include="Content\assets\plugins\chart.js\Chart.bundle.min.js" />
+    <Content Include="Content\assets\plugins\chart.js\Chart.css" />
+    <Content Include="Content\assets\plugins\chart.js\Chart.js" />
+    <Content Include="Content\assets\plugins\chart.js\Chart.min.css" />
+    <Content Include="Content\assets\plugins\chart.js\Chart.min.js" />
     <Content Include="Content\assets\plugins\easing\easing.js" />
     <Content Include="Content\assets\plugins\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Content\assets\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -3394,6 +3405,7 @@
     <Content Include="Content\assets\dist\js\adminlte.min.js.map" />
     <Content Include="Areas\Admin\Views\SettingSystem\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SettingSystem\Partial_Setting.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3481,6 +3493,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\ThongKeDoanhThu\" />
     <Folder Include="Content\ckfinder\userfiles\" />
     <Folder Include="Uploads\flash\" />
   </ItemGroup>
@@ -3553,6 +3566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502111220362_UpdateSubcibe.resx">
       <DependentUpon>202502111220362_UpdateSubcibe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502121206184_UpdateOriginalPrice.resx">
+      <DependentUpon>202502121206184_UpdateOriginalPrice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

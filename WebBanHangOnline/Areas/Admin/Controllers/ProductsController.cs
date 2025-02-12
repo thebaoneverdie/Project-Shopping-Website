@@ -36,7 +36,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 
 		public ActionResult Add()
 		{
-			ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(),"Id","Title");
+			ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
 			return View();
 		}
 
@@ -90,6 +90,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 
 		public ActionResult Edit(int id)
 		{
+
 			ViewBag.ProductCategory = new SelectList(_dbContext.ProductCategories.ToList(), "Id", "Title");
 			var item = _dbContext.Products.Find(id);
 			return View(item);

@@ -95,14 +95,14 @@
                                             @Html.ValidationMessageFor(x => x.Detail, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="row">
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Số lượng</label>
                                                     @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control", @placeholder = "Số lượng" })
                                                     @Html.ValidationMessageFor(x => x.Quantity, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Giá</label>
                                                     <input type="text" name="demoPrice" id="demoPrice" class="form-control demo" data-a-sign=" " value="@Model.Price">
@@ -110,12 +110,20 @@
                                                     @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Giá khuyến mãi</label>
                                                     <input type="text" name="demoPriceSale" id="demoPriceSale" class="form-control demo" data-a-sign=" " data-a-dec="," data-a-sep="." value="@Model.PriceSale">
                                                     @Html.HiddenFor(x => x.PriceSale, new { @id = "PriceSale", @class = "", @placeholder = "Giá khuyến mãi" })
                                                     @Html.ValidationMessageFor(x => x.PriceSale, null, new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="demoOriginalPrice">Giá nhập</label>
+                                                    <input type="text" name="demoOriginalPrice" id="demoOriginalPrice" value="@Model.OriginalPrice" class="form-control auto">
+                                                    @Html.HiddenFor(x => x.OriginalPrice)
+                                                    @Html.ValidationMessageFor(x => x.OriginalPrice, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                         </div>
@@ -251,5 +259,19 @@
                 decimalPlaces: 2 // Số lượng chữ số thập phân
             });
         });
+
+        const autoNumOriginalPrice = new AutoNumeric('#demoOriginalPrice', {
+            digitGroupSeparator: '.',      // Dấu phân cách hàng nghìn
+            decimalCharacter: ',',         // Dấu phân cách thập phân
+            currencySymbol: '',            // Không có ký hiệu tiền tệ
+            decimalPlaces: 0               // Chỉ nhập số nguyên
+        });
+
+        $('#demoOriginalPrice').on('blur change keyup', function () {
+            const originalPriceValue = autoNumOriginalPrice.getNumber(); // Lấy giá trị không định dạng
+            $('#OriginalPrice').val(originalPriceValue); // Gán vào trường ẩn
+        });
+
+       
     </script>
 }
