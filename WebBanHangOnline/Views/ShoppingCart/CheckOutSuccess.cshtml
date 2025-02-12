@@ -3,29 +3,32 @@
     ViewBag.Title = "Đặt hàng thành công";
 }
 
+
 <link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
 <link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">
-
-<<div class="container product_section_container">
-    <!-- Breadcrumbs -->
+<div class="container product_section_container">
     <div class="row">
-        <div class="col-12">
+        <div class="col product_section clearfix">
+
+            <!-- Breadcrumbs -->
+
             <div class="breadcrumbs d-flex flex-row align-items-center">
-                <ul class="mb-0">
+                <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="/"><i class="fa fa-angle-right" aria-hidden="true"></i> Giỏ hàng</a></li>
+                    <li class="active"><a href="/"><i class="fa fa-angle-right" aria-hidden="true"></i>Giỏ hàng</a></li>
                 </ul>
             </div>
-        </div>
-    </div>
 
-    <!-- Nội dung giỏ hàng -->
-    <div class="row mt-4">
-        <div class="col-12" id="load_data">
-            @*<h2 class="text-center mb-4">Giỏ hàng của bạn</h2>*@
-           <h2>Bạn đã mua hàng thành công, vui lòng kiểm tra đơn hàng của bạn trong Email!</h2>
+            <!-- Sidebar -->
+            <!-- Main Content -->
+
+            <div class="row">
+                <div class="col-md-12" id="load_data">
+                   <h2>Bạn đã mua hàng thành công</h2>
+                </div>
+                
+            </div>
         </div>
-      
     </div>
 </div>
 

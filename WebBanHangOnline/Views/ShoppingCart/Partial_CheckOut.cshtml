@@ -1,44 +1,46 @@
 ﻿@model WebBanHangOnline.Models.OrderViewModel
-@using (Ajax.BeginForm("CheckOut", "ShoppingCart", new AjaxOptions
+@using (Ajax.BeginForm("CheckOut", "Shoppingcart", new AjaxOptions
 {
     HttpMethod = "POST",
     UpdateTargetId = "load_data",
     OnComplete = "OnSuccessCO",
     OnFailure = "OnFailure"
-}, new {@Id = "myForm"}))
+
+}, new { @Id = "myForm" }))
 {
+    <script>
+        function OnSuccessCO() {
+            location.href = "/ShoppingCart/CheckOutSuccess";
+        }
+        function OnFailure() {
+
+        }
+    </script>
     @Html.AntiForgeryToken()
-
-    <h3 class="mb-3">Thông tin khách hàng</h3>
-
-    <div class="mb-3">
-        <label class="form-label fw-bold">Họ tên khách hàng</label>
-        <input type="text" name="CustomerName" required class="form-control rounded-3" placeholder="Nhập họ tên" autocomplete="off" />
+    <h3>Thông tin khách hàng</h3>
+    <div class="form-group">
+        <label>Họ tên khách hàng</label>
+        <input type="text" name="CustomerName" required class="form-control" autocomplete="off" />
     </div>
-
-    <div class="mb-3">
-        <label class="form-label fw-bold">Số điện thoại</label>
-        <input type="text" name="Phone" class="form-control rounded-3" placeholder="Nhập số điện thoại" autocomplete="off" />
+    <div class="form-group">
+        <label>Số điện thoại</label>
+        <input type="text" name="Phone" class="form-control" autocomplete="off" />
     </div>
-
-    <div class="mb-3">
-        <label class="form-label fw-bold">Địa chỉ</label>
-        <input type="text" name="Address" class="form-control rounded-3" placeholder="Nhập địa chỉ" autocomplete="off" />
+    <div class="form-group">
+        <label>Địa chỉ</label>
+        <input type="text" name="Address" class="form-control" autocomplete="off" />
     </div>
-
-    <div class="mb-3">
-        <label class="form-label fw-bold">Email</label>
-        <input type="email" name="Email" class="form-control rounded-3" placeholder="Nhập email" autocomplete="off" />
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="Email" class="form-control" autocomplete="off" />
     </div>
-
-    <div class="mb-3">
-        <label class="form-label fw-bold">Hình thức thanh toán</label>
-        <select class="form-control" name="PaymentType">
+    <div class="form-group">
+        <label>Hình thức thanh toán</label>
+        <select class="form-control" name="TypePayment">
             <option value="1" selected>COD</option>
             <option value="2">Chuyển khoản</option>
         </select>
     </div>
-
     <div class="form-group">
         <button type="submit" class="btn btn-block btn-success">Đặt hàng</button>
     </div>
